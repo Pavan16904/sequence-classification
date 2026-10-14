@@ -1,6 +1,6 @@
-Replace the contents of your `README.md` with this updated version:
+Replace the contents of `README.md` with this updated version. Copy everything inside the four-backtick box, but **leave out the outer four backticks**. Keep the three-backtick fences inside the README around commands and the folder diagram.
 
-```markdown
+````markdown
 # Sequence Classification System: IMDB Sentiment Analysis Using Recurrent Neural Networks
 
 Deep Learning — Sequence Classification Project
@@ -16,7 +16,7 @@ Deep Learning — Sequence Classification Project
 
 ## Assigned Topic
 
-Develop a sequence classification or prediction system that receives a sequence of words, characters, sensor readings, or time-series values and predicts the corresponding class or next element. This project uses IMDB movie reviews to classify sentiment as positive or negative and compares recurrent architectures on short and long sequences.
+Develop a sequence classification or prediction system that receives a sequence of words, characters, sensor readings, or time-series values and predicts its class or next element. This project uses IMDB movie reviews to classify sentiment as positive or negative and compares recurrent architectures on short and long sequences.
 
 ## 1. Problem Statement and Our Approach
 
@@ -86,7 +86,9 @@ sequence-classification/
 
 ## 5. Setup
 
-Install Python and open this project folder in Visual Studio Code. Open **Terminal → New Terminal**, then install the required packages from the project folder:
+Install Python, open this project folder in Visual Studio Code, and open **Terminal → New Terminal**.
+
+Install the required packages from the project folder:
 
 ```bash
 py -m pip install -r requirements.txt
@@ -147,9 +149,24 @@ The experiment runner loops over the three sequence lengths and five model types
 
 The main program runs the experiments, prints a results summary, writes `model_results.csv`, and saves three graphs in the `results/` folder.
 
-## 8. Results and Discussion
+## 8. Experimental Settings
 
-### 8.1 Test Results
+| Setting | Value |
+|---|---:|
+| Vocabulary size | 10,000 words |
+| Embedding size | 64 |
+| Hidden units | 64 |
+| Batch size | 64 |
+| Maximum epochs | 3 |
+| Early stopping | Validation loss, patience 1 |
+| Sequence lengths | 64, 128, 256 |
+| Optimizer | Adam |
+| Loss function | Binary cross-entropy |
+| Evaluation metrics | Accuracy and F1 score |
+
+## 9. Results and Discussion
+
+### 9.1 Test Results
 
 The following results are from the completed experiment:
 
@@ -161,33 +178,33 @@ The following results are from the completed experiment:
 | LSTM | 0.775 | 0.765 | 0.811 | 0.794 | 0.851 | 0.855 |
 | GRU | 0.767 | 0.773 | 0.826 | 0.821 | **0.855** | **0.856** |
 
-### 8.2 Effect of Sequence Length
+### 9.2 Effect of Sequence Length
 
 The GRU and LSTM achieved their strongest results at length 256. The GRU at length 256 had the highest test accuracy, 0.855, and the highest F1 score, 0.856. The LSTM at the same length was close, with 0.851 accuracy and 0.855 F1.
 
 Increasing sequence length did not improve every architecture. The Simple RNN had its best result at length 128, while the Bidirectional RNN had similar results at lengths 64 and 128. These results show that the effect of sequence length depends on the architecture.
 
-### 8.3 Short-Term and Long-Term Dependencies
+### 9.3 Short-Term and Long-Term Dependencies
 
 Recurrent networks process tokens in sequence and use information from earlier steps when processing later ones. A Simple RNN can have difficulty learning relationships between words that are far apart in a long review.
 
 An LSTM uses gates and a cell state to help preserve or update information across time steps. A GRU also uses gates to control information carried through the sequence. In this experiment, the LSTM and GRU produced their strongest results with 256-word reviews.
 
-### 8.4 Vanishing and Exploding Gradients
+### 9.4 Vanishing and Exploding Gradients
 
 During training, gradients are propagated backward through the sequence. A vanishing gradient becomes very small, making it difficult for the model to learn from earlier words. An exploding gradient becomes very large and can make training unstable.
 
 LSTM and GRU gates are designed to help control information flow across longer sequences. This project discusses these gradient problems conceptually; it does not directly record gradient norms.
 
-## 9. Conclusion
+## 10. Conclusion
 
 The GRU with a sequence length of 256 achieved the best result in this experiment, with 0.855 test accuracy and an F1 score of 0.856. The LSTM at length 256 performed almost as well. The results show that both architecture and sequence length can affect sentiment classification performance. Repeating the experiments with different random seeds would help determine how consistent these results are.
 
-## 10. Possible Extensions
+## 11. Possible Extensions
 
 - Repeat each experiment with multiple random seeds and report average scores.
 - Add confidence intervals to the accuracy and F1 results.
 - Record gradient norms during training to study vanishing and exploding gradients directly.
 - Compare additional sequence lengths or embedding sizes.
 - Add a next-word prediction task using a unidirectional recurrent model.
-```
+````
