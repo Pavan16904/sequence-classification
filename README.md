@@ -1,4 +1,8 @@
-Copy this into your project’s `README.md`. Add your team’s names and roll numbers where indicated.
+Roll number	Name
+1KS22AI030	Pavan S
+1KS23AI031	Monashree P
+1KS23AI046	Samana R Kashyap
+1KS23AI054	Sripriya R
 
 ```markdown
 # IMDB Sentiment Classification — Recurrent Neural Network Comparison
